@@ -5,7 +5,7 @@ import {DocumentLayout} from './document.layout';
 import {SCREEN_DEFINITIONS} from '~/app/screen-definitions';
 import * as Yup from 'yup';
 import Toast from 'react-native-toast-message';
-import {client} from '~/services/axios-client';
+import {client} from '~/api/client/client';
 
 const emailSchema = Yup.string()
   .email('Formato de email inválido')

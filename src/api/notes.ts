@@ -1,5 +1,5 @@
 import {NoteItemPriority} from '~/components/note-item/note-item';
-import {client} from '~/services/axios-client';
+import {client} from '~/api/client/client';
 
 export interface ResponseNotes {
   id: string;

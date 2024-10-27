@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch} from 'react-redux';
 import {SCREEN_DEFINITIONS} from '~/app/screen-definitions';
 import {clearUser} from '~/redux/user';
-import {client} from '~/services/axios-client';
+import {client} from '~/api/client/client';
 import {
   Circle,
   Container,

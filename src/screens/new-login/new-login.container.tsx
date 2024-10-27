@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {authLogin} from '../../api/user';
 import {NewLoginLayout} from './new-login.layout';
-import {client} from '~/services/axios-client';
+import {client} from '~/api/client/client';
 import Toast from 'react-native-toast-message';
 import {useNavigation} from '@react-navigation/native';
 import {SCREEN_DEFINITIONS} from '~/app/screen-definitions';

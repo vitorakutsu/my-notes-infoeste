@@ -1,4 +1,4 @@
-import {client} from '~/services/axios-client';
+import {client} from '~/api/client/client';
 
 export interface RequestAuthExists {
   email: string;
