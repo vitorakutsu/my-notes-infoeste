@@ -1,11 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import Toast from 'react-native-toast-message';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {useDispatch} from 'react-redux';
-import {SCREEN_DEFINITIONS} from '~/app/screen-definitions';
-import {clearUser} from '~/redux/user';
+import {useDispatch, useSelector} from 'react-redux';
 import {client} from '~/api/client/client';
+import {SCREEN_DEFINITIONS} from '~/app/screen-definitions';
+import Logout from '~/assets/icons/logout.svg';
+import User from '~/assets/icons/user.svg';
+import {clearUser} from '~/redux/user';
 import {
   Circle,
   Container,
@@ -15,10 +16,12 @@ import {
   TextWrapper,
   Welcome,
 } from './homer-header.styles';
+import {ReduxState} from '~/redux/types';
 
 export const HomeHeader = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const user = useSelector((state: ReduxState) => state.user.user);
 
   const handleLogout = async () => {
     client.defaults.headers.Authorization = '';
@@ -39,23 +42,15 @@ export const HomeHeader = () => {
       <Row>
         <Left>
           <Circle>
-            <Icon name="home" size={32} color="#000" />
+            <User width={32} height={32} color="#000" onPress={handleLogout} />
           </Circle>
           <TextWrapper>
             <Welcome>Bem-vindo,</Welcome>
-            <Name>Usuário</Name>
+            <Name>{user.name}</Name>
           </TextWrapper>
         </Left>
 
-        <Icon
-          name="logout"
-          size={32}
-          color="#000"
-          onPress={handleLogout}
-          style={{
-            cursor: 'pointer',
-          }}
-        />
+        <Logout width={32} height={32} color="#000" onPress={handleLogout} />
       </Row>
     </Container>
   );

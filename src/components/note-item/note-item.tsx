@@ -1,7 +1,15 @@
 import * as React from 'react';
 import {Checkbox} from 'react-native-paper';
-import {Container, Priority, Row, Title} from './note-item.styles';
+import {
+  Column,
+  Container,
+  Content,
+  Priority,
+  Row,
+  Title,
+} from './note-item.styles';
 import {RequestUpdateNote, ResponseNotes} from '~/api/notes';
+import {colors} from '~/styles/colors';
 
 interface INoteItem {
   note: ResponseNotes;
@@ -23,11 +31,15 @@ export const NoteItem = ({note, onUpdateNote, onDeleteNote}: INoteItem) => {
       <Row>
         <Checkbox
           status={status}
+          color={colors.primary}
           onPress={async () =>
             onUpdateNote({id: note.id, completed: !note.completed})
           }
         />
-        <Title isCompleted={note.completed}>{note.title}</Title>
+        <Column>
+          <Title isCompleted={note.completed}>{note.title}</Title>
+          <Content isCompleted={note.completed}>{note.content}</Content>
+        </Column>
       </Row>
       <Priority status={note.priority as NoteItemPriority} />
     </Container>

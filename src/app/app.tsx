@@ -7,6 +7,8 @@ import {Provider} from 'react-redux';
 import store from '~/redux/store';
 import Toast from 'react-native-toast-message';
 
+import 'react-native-vector-icons/MaterialCommunityIcons';
+
 const Stack = createNativeStackNavigator();
 
 export const App = (): ReactElement => {

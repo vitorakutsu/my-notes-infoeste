@@ -5,8 +5,11 @@ import {client} from '~/api/client/client';
 import Toast from 'react-native-toast-message';
 import {useNavigation} from '@react-navigation/native';
 import {SCREEN_DEFINITIONS} from '~/app/screen-definitions';
+import {useDispatch} from 'react-redux';
+import {setUser} from '~/redux/user';
 
 export const NewLogin = ({route}: {route: any}) => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const [password, setPassword] = useState('');
@@ -19,6 +22,7 @@ export const NewLogin = ({route}: {route: any}) => {
       const request = {email, password};
       await authLogin(request)
         .then(data => {
+          dispatch(setUser({email, name: data.user_name}));
           client.defaults.headers.Authorization = `Bearer ${data.access_token}`;
 
           // @ts-expect-error

@@ -19,10 +19,24 @@ export const Row = styled(View)`
   gap: 16px;
 `;
 
+export const Column = styled(View)`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+`;
+
 export const Title = styled(Text)<{isCompleted?: boolean}>`
   font-family: 'Poppins-Medium';
-  font-size: 12px;
+  font-size: 16px;
   color: ${colors.neutral.darkest};
+  text-decoration: ${({isCompleted}) =>
+    isCompleted ? 'line-through' : 'none'};
+`;
+
+export const Content = styled(Text)<{isCompleted?: boolean}>`
+  font-family: 'Poppins-Medium';
+  font-size: 12px;
+  color: ${colors.neutral.medium};
   text-decoration: ${({isCompleted}) =>
     isCompleted ? 'line-through' : 'none'};
 `;

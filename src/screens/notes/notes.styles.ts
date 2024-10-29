@@ -22,7 +22,5 @@ export const Title = styled(Text)`
 `;
 
 export const ActionButton = styled(FAB)`
-  width: 48px;
-  height: 48px;
   background-color: ${colors.primary};
 `;
